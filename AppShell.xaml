@@ -19,8 +19,8 @@
     <FlyoutItem Title="Sobre o Desenvolvedor">
         <ShellContent
             Title="Sobre"
-            ContentTemplate="{DataTemplate views:Sobre}"
-            Route="Sobre" />
+            ContentTemplate="{DataTemplate views:SobrePage}"
+            Route="SobrePage" />
     </FlyoutItem>
 
 </Shell>

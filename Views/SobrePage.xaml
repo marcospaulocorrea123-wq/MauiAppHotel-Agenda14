@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.Views.SobrePage"
+             Title="Sobre o Aplicativo"
+             BackgroundColor="#0F141C">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+            <Border Stroke="#E3A857"
+                    StrokeThickness="1"
+                    BackgroundColor="#1F2430"
+                    Padding="25">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="15">
+
+                    <!-- ======================================================== -->
+                    <!-- NOVO CAMPO RETANGULAR PARA A FOTO DO HOTEL -->
+                    <!-- ======================================================== -->
+                    <Border Stroke="#E3A857"
+                            StrokeThickness="1"
+                            BackgroundColor="#0F141C"
+                            HeightRequest="160"
+                            HorizontalOptions="Fill">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+
+                        <!-- Substitua 'dotnet_bot.png' pelo nome da sua foto, ex: 'hotel.png' -->
+                        <Image Source="dotnet_bot.png"
+                               Aspect="AspectFill"
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill" />
+                    </Border>
+                    <!-- ======================================================== -->
+
+                    <!-- TÍTULO -->
+                    <Label Text="For Aquaponos Hotel"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="#E3A857"
+                           HorizontalOptions="Center" />
+
+                    <Label Text="Versão 1.0 - .NET MAUI"
+                           FontSize="12"
+                           TextColor="#A0A5B5"
+                           HorizontalOptions="Center" />
+
+                    <BoxView HeightRequest="1" Color="#2E3440" Margin="0,5" />
+
+                    <Label Text="Aplicativo desenvolvido para reserva e gerenciamento de diárias de hospedagem, aplicando conceitos de Programação Orientada a Objetos (POO)."
+                           FontSize="14"
+                           TextColor="#FFFFFF"
+                           HorizontalTextAlignment="Center" />
+
+                    <Label Text="Disciplina: Programação Mobile"
+                           FontSize="13"
+                           FontAttributes="Italic"
+                           TextColor="#A0A5B5"
+                           HorizontalTextAlignment="Center" />
+
+                    <Label Text="Agenda 14 - Desenvolvimento de Sistemas"
+                           FontSize="13"
+                           FontAttributes="Italic"
+                           TextColor="#A0A5B5"
+                           HorizontalTextAlignment="Center" />
+
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Voltar"
+                    Clicked="Button_Clicked"
+                    BackgroundColor="#E3A857"
+                    TextColor="#0F141C"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    HeightRequest="50" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

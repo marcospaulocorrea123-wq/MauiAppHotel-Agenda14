@@ -2,94 +2,161 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppHotel.Views.ContratacaoHospedagem"
-             Title="ContratacaoHospedagem"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundColor="{StaticResource Gray100}">
+             Title="Cálculo da Hospedagem"
+             BackgroundColor="#0F141C">
 
-    <VerticalStackLayout VerticalOptions="CenterAndExpand"
-                         Padding="10"
-                         Spacing="10">
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="25">
 
-        <Label Text="Cálculo da Diária"
-               FontFamily="Algerian"
-               FontSize="45"
-               TextColor="{StaticResource Primary}" />
+            <!-- Card Principal -->
+            <Border Stroke="#E3A857"
+                    StrokeThickness="1.5"
+                    BackgroundColor="#1F2430"
+                    Padding="22">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
 
-        <Frame Padding="10">
-            <VerticalStackLayout>
-                <Grid RowDefinitions="Auto, Auto"
-                      ColumnDefinitions="*, *, 2*">
+                <VerticalStackLayout Spacing="18">
 
-                    <Label Grid.Row="0" Grid.Column="0"
-                           Text="Adultos:" />
+                    <!-- Título -->
+                    <Label Text="Simulador de Diárias"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="#E3A857"
+                           HorizontalOptions="Center" />
 
-                    <Label Grid.Row="0" Grid.Column="1"
-                           TextColor="{StaticResource Primary}"
-                           Text="{Binding Value}"
-                           BindingContext="{x:Reference stp_adultos}"/>
+                    <BoxView HeightRequest="1" Color="#2E3440" Margin="0,2" />
 
-                    <Stepper Grid.Row="0" Grid.Column="2"
-                             x:Name="stp_adultos"
-                             Minimum="0"
-                             Maximum="10"
-                             Increment="1" />
-
-                    <Label Grid.Row="1" Grid.Column="0"
-                           Text="Crianças:" />
-
-                    <Label Grid.Row="1" Grid.Column="1"
-                           TextColor="{StaticResource Primary}"
-                           Text="{Binding Value}"
-                           BindingContext="{x:Reference stp_criancas}"/>
-
-                    <Stepper Grid.Row="1" Grid.Column="2"
-                             x:Name="stp_criancas"
-                             Minimum="0"
-                             Maximum="10"
-                             Increment="1" />
-                </Grid>
-
-                <Frame Padding="10" Margin="10">
-                    <VerticalStackLayout>
-
-                        <Label Text="Escolha sua Suíte"
-                               TextTransform="Uppercase"
-                               FontSize="Subtitle"
-                               TextColor="{StaticResource Primary}"/>
+                    <!-- SELEÇÃO DA ACOMODAÇÃO COM ALTURA EXPANDIDA E TEXTO NÍTIDO -->
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Escolha sua Suíte:"
+           FontSize="14"
+           FontAttributes="Bold"
+           TextColor="#E3A857" />
 
                         <Picker x:Name="pck_quarto"
-                                Title="Selecione sua Acomodação" />
+            Title="Toque aqui para escolher a acomodação"
+            ItemDisplayBinding="{Binding Descricao}"
+            TextColor="#FFFFFF"
+            TitleColor="#A0A5B5"
+            BackgroundColor="#2A3142"
+            FontSize="16"
+            HeightRequest="60"
+            MinimumHeightRequest="55"
+            VerticalTextAlignment="Center"
+            HorizontalOptions="Fill" />
                     </VerticalStackLayout>
-                </Frame>
 
-                <Frame Padding="10"
-                       Margin="10">
-                    <VerticalStackLayout Spacing="10">
+                    <BoxView HeightRequest="1" Color="#2E3440" Margin="0,2" />
 
-                        <Label Text="Período da Estadia"
-                               TextTransform="Uppercase"
-                               FontSize="Subtitle"
-                               TextColor="{StaticResource Primary}"/>
+                    <!-- CONTADORES DE HÓSPEDES -->
+                    <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
 
-                        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-                            <Label Text="Check-in:" />
+                        <!-- Adultos -->
+                        <VerticalStackLayout Grid.Column="0" Spacing="6" HorizontalOptions="Center">
+                            <Label Text="Adultos:"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#E3A857"
+                                   HorizontalOptions="Center" />
+
+                            <Label Text="{Binding Source={x:Reference stp_adultos}, Path=Value}"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFFFFF"
+                                   HorizontalOptions="Center" />
+
+                            <Stepper x:Name="stp_adultos"
+                                     Minimum="1"
+                                     Maximum="10"
+                                     Increment="1"
+                                     Value="1"
+                                     HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+
+                        <!-- Crianças -->
+                        <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="Center">
+                            <Label Text="Crianças:"
+                                   FontSize="14"
+                                   FontAttributes="Bold"
+                                   TextColor="#E3A857"
+                                   HorizontalOptions="Center" />
+
+                            <Label Text="{Binding Source={x:Reference stp_criancas}, Path=Value}"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFFFFF"
+                                   HorizontalOptions="Center" />
+
+                            <Stepper x:Name="stp_criancas"
+                                     Minimum="0"
+                                     Maximum="10"
+                                     Increment="1"
+                                     Value="0"
+                                     HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <BoxView HeightRequest="1" Color="#2E3440" Margin="0,2" />
+
+                    <!-- DATAS: CHECK-IN E CHECK-OUT -->
+                    <Grid ColumnDefinitions="*, *" ColumnSpacing="15">
+
+                        <!-- Check-in -->
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label Text="Check-in:"
+                                   FontSize="13"
+                                   FontAttributes="Bold"
+                                   TextColor="#E3A857" />
+
                             <DatePicker x:Name="dtpck_checkin"
-                                        Format="dd/MM/yyyy" />
-                        </HorizontalStackLayout>
+                                        Format="dd/MM/yyyy"
+                                        TextColor="#FFFFFF"
+                                        BackgroundColor="#2A3142"
+                                        HeightRequest="48"
+                                        DateSelected="dtpck_checkin_DateSelected" />
+                        </VerticalStackLayout>
 
-                        <HorizontalStackLayout HorizontalOptions="CenterAndExpand">
-                            <Label Text="Check-out:" />
+                        <!-- Check-out -->
+                        <VerticalStackLayout Grid.Column="1" Spacing="6">
+                            <Label Text="Check-out:"
+                                   FontSize="13"
+                                   FontAttributes="Bold"
+                                   TextColor="#E3A857" />
+
                             <DatePicker x:Name="dtpck_checkout"
-                                        Format="dd/MM/yyyy" />
-                        </HorizontalStackLayout>
-                    </VerticalStackLayout>
-                </Frame>
+                                        Format="dd/MM/yyyy"
+                                        TextColor="#FFFFFF"
+                                        BackgroundColor="#2A3142"
+                                        HeightRequest="48" />
+                        </VerticalStackLayout>
+                    </Grid>
 
-                <Button Text="Avançar"  />
+                </VerticalStackLayout>
+            </Border>
 
+            <!-- BOTÕES DE NAVEGAÇÃO -->
+            <VerticalStackLayout Spacing="12">
+                <Button Text="Avançar para o Resumo"
+                        Clicked="BtnAvancar_Clicked"
+                        BackgroundColor="#E3A857"
+                        TextColor="#0F141C"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        HeightRequest="50" />
+
+                <Button Text="Sobre o Hotel"
+                        Clicked="BtnSobre_Clicked"
+                        BackgroundColor="Transparent"
+                        TextColor="#E3A857"
+                        BorderColor="#E3A857"
+                        BorderWidth="1.5"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        HeightRequest="46" />
             </VerticalStackLayout>
-        </Frame>
 
-    </VerticalStackLayout>
-
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
