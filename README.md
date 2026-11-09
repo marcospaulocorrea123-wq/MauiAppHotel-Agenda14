@@ -101,4 +101,4 @@ O desenvolvimento do **MauiAppHotel** comprovou a relevância prática dos pilar
 
 A transição de interfaces isoladas para um modelo orientado a domínio viabilizou reaproveitamento de código, encapsulamento de regras de negócio e maior robustez contra entradas inválidas. Adicionalmente, a experiência reforçou como a combinação entre **engenharia de software sólida** e o uso guiado de **Inteligência Artificial** acelera a resolução de bugs e eleva a qualidade do produto final.
 
-https://github.com/marcospaulocorrea123-wq/MauiAppHotel-Agenda14.git
+
